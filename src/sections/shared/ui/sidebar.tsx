@@ -1,4 +1,4 @@
-import { Atom, Calculator, LucideLayoutDashboard } from "lucide-react";
+import { Atom, Bird, Calculator, LucideLayoutDashboard } from "lucide-react";
 
 import { SidebarMenuItem } from "@/sections/shared/ui/sidebar-menu-item";
 
@@ -15,6 +15,12 @@ const menuItems = [
 		title: "Counter",
 		subtitle: "Make some math",
 	},
+	{
+		path: "/dashboard/pokemons",
+		icon: <Bird size={40} />,
+		title: "Pokemons",
+		subtitle: "Gotta catch 'em all!",
+	},
 ];
 
 export const Sidebar = () => {
@@ -22,7 +28,7 @@ export const Sidebar = () => {
 		<div
 			id="menu"
 			style={{ width: "400px" }}
-			className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen overflow-y-scroll"
+			className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 overflow-y-scroll"
 		>
 			<div id="logo" className="my-4 px-6">
 				<h1 className="flex items-center text-lg md:text-2xl font-bold text-white">
