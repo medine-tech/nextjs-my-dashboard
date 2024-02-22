@@ -7,6 +7,8 @@ const getPokemons = async (limit = 20, offset = 0): Promise<Pokemon[]> => {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const data: PokemonsResponse = await response.json();
 
+	//throw new Error("This is an error");
+
 	return data.results.map((pokemon) => ({
 		id: pokemon.url.split("/").at(-2) ?? "",
 		name: pokemon.name,
