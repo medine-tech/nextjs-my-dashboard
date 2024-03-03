@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 import Pokemon from "@/modules/pokemons/domain/pokemon";
 import { PokemonResponse } from "@/modules/pokemons/infrastructure/response";
@@ -10,6 +11,11 @@ interface PokemonPageProps {
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
 	const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+
+	if (!response.ok) {
+		throw notFound();
+	}
+
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const { name, sprites, moves, types, weight }: PokemonResponse = await response.json();
 
@@ -19,12 +25,19 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 };
 
 export async function generateMetadata({ params }: PokemonPageProps): Promise<Metadata> {
-	const pokemon = await getPokemon(params.id);
+	try {
+		const pokemon = await getPokemon(params.id);
 
-	return {
-		title: `#${pokemon.id} -  ${pokemon.name}`,
-		description: `${pokemon.name}\`s page.`,
-	};
+		return {
+			title: `#${pokemon.id} -  ${pokemon.name}`,
+			description: `${pokemon.name}\`s page.`,
+		};
+	} catch (error) {
+		return {
+			title: "Pokemon not found",
+			description: "This pokemon does not exist",
+		};
+	}
 }
 
 export default async function PokemonPage({ params }: PokemonPageProps) {
