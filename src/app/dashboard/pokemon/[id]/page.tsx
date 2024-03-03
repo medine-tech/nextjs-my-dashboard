@@ -24,6 +24,10 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 	return { id, name, sprites, moves, types, weight };
 };
 
+export function generateStaticParams() {
+	return Array.from({ length: 151 }).map((_, i) => ({ id: `${i + 1}` }));
+}
+
 export async function generateMetadata({ params }: PokemonPageProps): Promise<Metadata> {
 	try {
 		const pokemon = await getPokemon(params.id);
