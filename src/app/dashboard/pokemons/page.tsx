@@ -1,8 +1,7 @@
-import Pokemon from "@/modules/pokemons/domain/pokemon";
 import { PokemonsResponse } from "@/modules/pokemons/infrastructure/response";
 import { PokemonGrid } from "@/sections/pokemons/grid";
 
-const getPokemons = async (limit = 20, offset = 0): Promise<Pokemon[]> => {
+const getPokemons = async (limit = 20, offset = 0): Promise<{ id: string; name: string }[]> => {
 	const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const data: PokemonsResponse = await response.json();

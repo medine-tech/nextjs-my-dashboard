@@ -1,8 +1,7 @@
-import Pokemon from "@/modules/pokemons/domain/pokemon";
 import { PokemonCard } from "@/sections/pokemons/card";
 
 interface PokemonGridProps {
-	pokemons: Pokemon[];
+	pokemons: { id: string; name: string }[];
 }
 
 export const PokemonGrid = ({ pokemons }: PokemonGridProps) => {

@@ -52,7 +52,7 @@ export default async function PokemonPage({ params }: PokemonPageProps) {
 					</h1>
 					<div className="flex flex-col justify-center items-center">
 						<Image
-							src={pokemon.sprites.other.dream_world.front_default ?? ""}
+							src={pokemon.sprites.other.dream_world.front_default}
 							width={150}
 							height={150}
 							alt={`Imagen del pokemon ${pokemon.name}`}

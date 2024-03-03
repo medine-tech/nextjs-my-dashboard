@@ -2,10 +2,8 @@ import { HeartIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import Pokemon from "@/modules/pokemons/domain/pokemon";
-
 interface PokemonCardProps {
-	pokemon: Pokemon;
+	pokemon: { id: string; name: string };
 }
 
 export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
