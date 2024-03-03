@@ -7,7 +7,7 @@ interface PokemonCardProps {
 }
 
 export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
-	const { id, name } = pokemon;
+	const { name } = pokemon;
 
 	return (
 		<div className="mx-auto right-0 mt-2 w-60">
@@ -24,7 +24,7 @@ export const PokemonCard = ({ pokemon }: PokemonCardProps) => {
 					<p className="pt-2 text-lg font-semibold text-gray-50 capitalize">{name}</p>
 					<div className="mt-5">
 						<Link
-							href={`/dashboard/pokemon/${id}`}
+							href={`/dashboard/pokemons/${name}`}
 							className="border rounded-full py-2 px-4 text-xs font-semibold text-gray-100"
 						>
 							Show more
